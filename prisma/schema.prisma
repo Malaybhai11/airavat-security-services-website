@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  date        String
+  achievement String
+  blogContent String
+  thumbnail   String
+  number      Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([number])
+}
+
+model Inquiry {
+  id          String    @id @default(cuid())
+  type        String           // "career" or "service"
+  name        String
+  email       String
+  phone       String
+  message     String
+  status      String   @default("pending") // "pending", "reviewed", "completed"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

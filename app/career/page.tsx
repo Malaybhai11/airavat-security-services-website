@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -44,10 +45,51 @@ export default function CareerPage() {
     whyJoin: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Application submitted successfully! Our HR team will contact you soon.');
+    
+    try {
+      const res = await fetch('/api/inquiries/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'career',
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          message: `Career Application\n\nPosition: ${formData.position}\nPreferred Location: ${formData.preferredLocation}\nJoin Date: ${formData.joinDate}\nShift: ${formData.shift}\nEducation: ${formData.education}\nExperience: ${formData.experience}\nEx-Serviceman: ${formData.exServiceman ? 'Yes' : 'No'}\nPrevious Work: ${formData.previousWork}\nSkills: ${formData.skills}\nWhy Join: ${formData.whyJoin}\nDOB: ${formData.dob}\nAddress: ${formData.address}`,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        toast.success('Application submitted successfully! Our HR team will contact you soon.');
+        // Reset form
+        setFormData({
+          fullName: '',
+          dob: '',
+          email: '',
+          phone: '',
+          address: '',
+          position: '',
+          preferredLocation: '',
+          joinDate: '',
+          shift: 'any',
+          education: '',
+          experience: '',
+          exServiceman: false,
+          previousWork: '',
+          languages: [],
+          skills: '',
+          whyJoin: '',
+        });
+      } else {
+        toast.error(data.error || 'Failed to submit application. Please try again.');
+      }
+    } catch (error) {
+      toast.error('An error occurred. Please try again.');
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -63,7 +105,7 @@ export default function CareerPage() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative w-22 h-22">
-                <Image src="/Logo.png" alt="Airavat Security" fill className="object-contain" />
+                <Image src="/logo.png" alt="Airavat Security" fill className="object-contain" />
               </div>
               <span className="text-xl font-heading font-bold text-[#040936] group-hover:text-[#0a1147] transition-colors">
                 Airavat Security Service

@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
+import { StructuredData } from './components/StructuredData';
 
 // Optimized animation variants
 const fadeInUp = {
@@ -113,12 +115,35 @@ export default function Home() {
   }, [isMenuOpen]);
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    console.log('Form submitted:', formData);
-    alert('Thank you for your enquiry! We will contact you soon.');
-    setFormData({ ...formData, service: '', message: '' });
+    try {
+      const res = await fetch('/api/inquiries/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'service',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: `Service: ${formData.service}\n\nMessage: ${formData.message}`,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        toast.success('Inquiry submitted successfully! We will contact you soon.');
+        setFormData({ name: formData.name, email: formData.email, phone: '', service: '', message: '' });
+        // Optionally redirect to success page
+        // window.location.href = `/inquiry/${data.inquiryId}`;
+      } else {
+        toast.error(data.error || 'Failed to submit inquiry. Please try again.');
+      }
+    } catch (error) {
+      toast.error('An error occurred. Please try again.');
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -138,12 +163,12 @@ export default function Home() {
       service: '',
       message: ''
     });
-    alert('Logged out successfully');
+    toast.success('Logged out successfully');
   };
 
   return (
     <div className="min-h-screen bg-white relative">
-
+      <StructuredData />
       {/* Main Content Wrapper */}
       <div className="relative z-10">
         {/* Loading Screen with Logo */}
@@ -203,7 +228,7 @@ export default function Home() {
             <div className="flex justify-between items-center h-20">
               {/* Logo */}
               <motion.a
-                href="#home"
+                href="/admin"
                 className="flex items-center space-x-3 group"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -231,7 +256,7 @@ export default function Home() {
 
               {/* Desktop Menu */}
               <div className="hidden md:flex space-x-8 items-center">
-                {['Home', 'About', 'Services', 'Projects'].map((item) => (
+                {['Home', 'About', 'Services'].map((item) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
@@ -245,11 +270,19 @@ export default function Home() {
                   </a>
                 ))}
                 {/* Career link - Navigate to Separate Page */}
+
                 <Link
                   href="/career"
                   className="relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1"
                 >
                   Career
+                  <span className="absolute bottom-0 left-0 h-0.5 bg-[#040936] transition-all duration-300 w-0 group-hover:w-full"></span>
+                </Link>
+                <Link
+                  href="/projects"
+                  className="relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1"
+                >
+                  Projects
                   <span className="absolute bottom-0 left-0 h-0.5 bg-[#040936] transition-all duration-300 w-0 group-hover:w-full"></span>
                 </Link>
                 <a
@@ -293,7 +326,7 @@ export default function Home() {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {['Home', 'About', 'Services', 'Projects'].map((item) => (
+                  {['Home', 'About', 'Services'].map((item) => (
                     <a
                       key={item}
                       href={`#${item.toLowerCase()}`}
@@ -312,6 +345,13 @@ export default function Home() {
                   >
                     Career
                   </Link>
+                  <Link
+                  href="/projects"
+                  className="relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1"
+                >
+                  Projects
+                  <span className="absolute bottom-0 left-0 h-0.5 bg-[#040936] transition-all duration-300 w-0 group-hover:w-full"></span>
+                </Link>
                   <a
                     href="#contact"
                     onClick={() => setIsMenuOpen(false)}
