@@ -5,6 +5,7 @@ import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { StructuredData } from './components/StructuredData';
+import { FaInstagram } from "react-icons/fa";
 
 // Optimized animation variants
 const fadeInUp = {
@@ -1240,6 +1241,12 @@ export default function Home() {
                 <p className="text-gray-400 text-sm leading-relaxed">
                   Professional security solutions with military discipline and modern technology across Gujarat.
                 </p>
+                <p className="text-gray-400 text-sm leading-relaxed mt-4">
+                      Built By Malay Raval, Vivek Pankhaniya and Kedar Thaker
+                </p>
+                <p className="text-gray-400 text-sm leading-relaxed mt-4">
+                      +91 7016870163,+91 9662955278,+91 9327370047
+                </p>
               </div>
 
               {/* Quick Links */}
@@ -1272,6 +1279,15 @@ export default function Home() {
                   </svg>
                   <span>+91 9426865263</span>
                 </div>
+                <a
+                  href="https://instagram.com/airavat_security_service"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-600 hover:text-pink-700 text-3xl"
+                >
+                  <FaInstagram />
+                </a>
+
               </div>
             </div>
 
