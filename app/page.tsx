@@ -172,42 +172,6 @@ export default function Home() {
       <StructuredData />
       {/* Main Content Wrapper */}
       <div className="relative z-10">
-        {/* Loading Screen with Logo */}
-        <AnimatePresence>
-          {isLoading && (
-            <motion.div
-              className="fixed inset-0 bg-[#040936] z-50 flex items-center justify-center"
-              initial={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="text-center">
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Image
-                    src="/logo.png"
-                    alt="Airavat Security Service"
-                    width={120}
-                    height={120}
-                    className="mx-auto mb-4"
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <p className="text-white font-heading font-bold text-xl tracking-wide">AIRAVAT SECURITY SERVICE</p>
-                  <p className="text-[#dec3a0] text-sm mt-2">सर्वदा शक्तिशाली</p>
-                </motion.div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* Skip to main content - Accessibility */}
         <a
           href="#home"
@@ -612,7 +576,7 @@ export default function Home() {
                   <div className="relative z-10 w-56 h-56 rounded-full overflow-hidden border-[5px] border-[#040936] shadow-2xl group-hover:scale-110 group-hover:border-[#0a1147] group-hover:shadow-[0_20px_60px_rgba(4,9,54,0.4)] transition-all duration-700">
                     <Image
                       src="/Manthan.png"
-                      alt="Mr. Manthan Gadhavi - Co-Founder"
+                      alt="Mr. Manthan Gadhavi - Founder"
                       fill
                       className="object-cover object-top"
                       priority
@@ -626,7 +590,7 @@ export default function Home() {
                     <h4 className="text-2xl font-heading font-bold mb-2 text-[#040936] group-hover:text-[#0a1147] transition-colors duration-300">
                       Mr. Manthan Gadhavi
                     </h4>
-                    <p className="text-base text-[#040936] font-bold mb-1">Co-Founder & Director</p>
+                    <p className="text-base text-[#040936] font-bold mb-1">Founder & Director</p>
                     <p className="text-sm text-gray-600 font-semibold flex items-center justify-center gap-2">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
@@ -636,7 +600,7 @@ export default function Home() {
                   </div>
 
                   <p className="text-[15px] leading-relaxed text-gray-700 mb-5">
-                    Co-Founder with 16 years of honorable service in the Indian Army – Corps of EME (2009-2025). Brings technical operations expertise, maintenance management, and security coordination precision to deliver efficient, reliable, and advanced security solutions.
+                    Founder with 16 years of honorable service in the Indian Army – Corps of EME (2009-2025). Brings technical operations expertise, maintenance management, and security coordination precision to deliver efficient, reliable, and advanced security solutions.
                   </p>
 
                   {/* Enhanced Expertise Tags */}
@@ -676,7 +640,7 @@ export default function Home() {
                   <div className="relative z-10 w-56 h-56 rounded-full overflow-hidden border-[5px] border-[#040936] shadow-2xl group-hover:scale-110 group-hover:border-[#0a1147] group-hover:shadow-[0_20px_60px_rgba(4,9,54,0.4)] transition-all duration-700">
                     <Image
                       src="/Mahavir.png"
-                      alt="Mr. Mahavir Gadhavi - Partner"
+                      alt="Mr. Mahavir Gadhavi"
                       fill
                       className="object-cover object-top"
                       priority
@@ -690,12 +654,12 @@ export default function Home() {
                     <h4 className="text-2xl font-heading font-bold mb-2 text-[#040936] group-hover:text-[#0a1147] transition-colors duration-300">
                       Mr. Mahavir Gadhavi
                     </h4>
-                    <p className="text-base text-[#040936] font-bold mb-1">Partner & Strategist</p>
+                    <p className="text-base text-[#040936] font-bold mb-1">Manager</p>
                     <p className="text-sm text-gray-600 font-semibold flex items-center justify-center gap-2">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                       </svg>
-                      Business Strategist
+                      Security Services Professional
                     </p>
                   </div>
 
@@ -706,7 +670,7 @@ export default function Home() {
                   {/* Enhanced Expertise Tags */}
                   <div className="flex flex-wrap gap-2 justify-center">
                     <span className="px-4 py-2 bg-linear-to-r from-[#040936] to-[#0a1147] text-white rounded-full text-xs font-bold shadow-md hover:shadow-lg transition-shadow duration-300">
-                      Business Strategy
+                      Security Specialist
                     </span>
                     <span className="px-4 py-2 bg-linear-to-r from-gray-100 to-gray-200 text-[#040936] rounded-full text-xs font-bold hover:from-gray-200 hover:to-gray-300 transition-all duration-300">
                       Client Relations
@@ -804,7 +768,7 @@ export default function Home() {
                     hasImage: true
                   },
                   {
-                    title: 'Walk-Through Metal Detectors',
+                    title: 'Door Metal Detectors[DFMD]',
                     desc: 'High-sensitivity gate detectors for large-scale entry screening with multi-zone detection and real-time alarm indicators.',
                     features: ['Multi-Zone Detection', 'Auto Calibration', 'Visual & Audio Alarms', 'Weather Resistant'],
                     image: '/GateMetalDetector.png',
@@ -1242,7 +1206,7 @@ export default function Home() {
                   Professional security solutions with military discipline and modern technology across Gujarat.
                 </p>
                 <p className="text-gray-400 text-sm leading-relaxed mt-4">
-                      Built By Malay Raval, Vivek Pankhaniya and Kedar Thaker
+                      Built By Malay Raval, Vivek Pankhaniya and Kedar Thakar
                 </p>
                 <p className="text-gray-400 text-sm leading-relaxed mt-4">
                       +91 7016870163,+91 9662955278,+91 9327370047
