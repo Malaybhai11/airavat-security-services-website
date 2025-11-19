@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Calendar, ExternalLink, Tag, Trophy, Sparkles, Award, Target } from 'lucide-react';
+import { Calendar, ExternalLink, Building2, Shield, CheckCircle2, ArrowRight, MapPin, Award, TrendingUp } from 'lucide-react';
+import Link from 'next/link';
 
 // Types
 interface Project {
@@ -15,86 +16,76 @@ interface Project {
   number: number;
 }
 
-// ProjectMilestoneCard Component
-function ProjectMilestoneCard({ 
-  project, 
-  index,
-  isLeft 
-}: { 
-  project: Project; 
-  index: number;
-  isLeft: boolean;
-}) {
+// MilestoneCard Component
+function MilestoneCard({ project, index, isLeft }: { project: Project; index: number; isLeft: boolean }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative bg-white rounded-2xl p-6 shadow-xl cursor-pointer transition-all duration-500 border border-gray-200 hover:border-blue-400 hover:shadow-2xl hover:-translate-y-2 group"
-    >
-      {/* Decorative Corner */}
-      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-blue-100 to-transparent rounded-tr-2xl opacity-50 group-hover:opacity-100 transition-opacity" />
-      
-      {/* Corner Indicator for Desktop */}
-      <div 
-        className={`hidden md:block absolute top-12 ${
-          isLeft ? '-right-4' : '-left-4'
-        } w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 border-4 border-white shadow-lg transform rotate-45 z-10`}
-      />
-
-      {/* Floating Badge */}
-      <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
-        <Trophy className="w-6 h-6 text-white" />
-      </div>
-
-      {/* Number Badge */}
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-semibold mb-4 shadow-md">
-        <Tag className="w-4 h-4" />
-        Project #{project.number}
-      </div>
-
-      {/* Date */}
-      <div className="flex items-center gap-2 text-sm text-gray-500 mb-3 font-medium">
-        <Calendar className="w-4 h-4 text-blue-500" />
-        <span>{project.date}</span>
-      </div>
-
-      {/* Title with Gradient */}
-      <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
-        {project.title}
-      </h3>
-
-      {/* Achievement */}
-      <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">
-        {project.achievement}
-      </p>
-
-      {/* Blog Link */}
-      <a
-        href={`/projects/${project.slug}`}
-        className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-all group"
+    <Link href={`/projects/${project.slug}`}>
+      <div
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-gray-200 hover:border-[#040936] overflow-hidden cursor-pointer"
       >
-        <span>Read Full Story</span>
-        <ExternalLink className={`w-4 h-4 transition-transform ${isHovered ? 'translate-x-1 -translate-y-1' : ''}`} />
-      </a>
+        {/* Corner Accent */}
+        <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-bl from-[#040936]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-      {/* Sparkle Effect */}
-      {isHovered && (
-        <div className="absolute top-4 right-4">
-          <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+        {/* Achievement Badge */}
+        <div className="absolute -top-3 -left-3 w-14 h-14 bg-linear-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg z-10 group-hover:scale-110 transition-transform duration-300">
+          <Award className="w-7 h-7 text-white" />
         </div>
-      )}
 
-      {/* Bottom Accent Line */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-    </div>
+        <div className="p-6 pt-8">
+          {/* Header with Number and Status */}
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-lg bg-linear-to-br from-[#040936] to-[#0a1147] flex items-center justify-center shadow-md">
+                <span className="text-white font-bold text-lg">#{project.number}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Milestone</span>
+                <span className="text-sm font-bold text-[#040936]">Project Completed</span>
+              </div>
+            </div>
+            <div className="px-3 py-1.5 bg-green-50 text-green-700 rounded-full text-xs font-bold flex items-center gap-1">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              Success
+            </div>
+          </div>
+
+          {/* Date */}
+          <div className="flex items-center gap-2 text-sm text-gray-500 mb-4 pb-4 border-b border-gray-100">
+            <Calendar className="w-4 h-4 text-[#040936]" />
+            <span className="font-medium">{project.date}</span>
+          </div>
+
+          {/* Title */}
+          <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#040936] transition-colors duration-300">
+            {project.title}
+          </h3>
+
+          {/* Achievement Description */}
+          <p className="text-gray-600 text-sm leading-relaxed mb-5 line-clamp-3">
+            {project.achievement}
+          </p>
+
+          {/* Read More Link */}
+          <div className="flex items-center gap-2 text-[#040936] font-semibold text-sm group-hover:gap-3 transition-all duration-300 pt-3 border-t border-gray-100">
+            <span>View Full Details</span>
+            <ArrowRight className={`w-4 h-4 transition-transform ${isHovered ? 'translate-x-1' : ''}`} />
+          </div>
+        </div>
+
+        {/* Bottom Accent Bar */}
+        <div className="h-1.5 bg-linear-to-r from-[#040936] via-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      </div>
+    </Link>
   );
 }
 
-// ProjectTimeline Component
-function ProjectTimeline({ projects }: { projects: Project[] }) {
-  const [visibleStations, setVisibleStations] = useState<Set<number>>(new Set());
+// MilestoneTimeline Component
+function MilestoneTimeline({ projects }: { projects: Project[] }) {
+  const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -102,104 +93,82 @@ function ProjectTimeline({ projects }: { projects: Project[] }) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = parseInt(entry.target.getAttribute('data-index') || '0');
-            setVisibleStations((prev) => new Set(prev).add(index));
+            setVisibleItems((prev) => new Set(prev).add(index));
           }
         });
       },
       { threshold: 0.2 }
     );
 
-    document.querySelectorAll('.station-marker').forEach((el) => observer.observe(el));
+    document.querySelectorAll('.milestone-item').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, [projects]);
 
   return (
-    <div className="relative pb-24">
-      {/* Animated Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/30 via-purple-50/30 to-pink-50/30 pointer-events-none rounded-3xl" />
-      
-      {/* Main Vertical Track - Desktop */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 transform -translate-x-1/2 hidden md:block shadow-lg" />
-      
-      {/* Animated Glow Effect on Track */}
-      <div className="absolute left-1/2 top-0 w-2 h-32 bg-gradient-to-b from-blue-500 to-transparent transform -translate-x-1/2 hidden md:block animate-pulse blur-sm" />
-      
-      {/* Railway Ties - Decorative */}
-      <div className="absolute left-1/2 top-0 bottom-0 transform -translate-x-1/2 hidden md:block pointer-events-none">
-        {Array.from({ length: 25 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-20 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-30"
-            style={{
-              top: `${i * 4}%`,
-              left: '-40px',
-            }}
-          />
-        ))}
-      </div>
+    <div className="relative milestone-timeline-container">
+      {/* Central Timeline Line */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-linear-to-b from-[#040936] via-blue-600 to-purple-600 transform -translate-x-1/2 hidden md:block" />
 
-      {/* Mobile Track */}
-      <div className="absolute left-10 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 md:hidden shadow-lg" />
+      {/* Mobile Timeline Line */}
+      <div className="absolute left-8 top-0 bottom-0 w-1 bg-linear-to-b from-[#040936] via-blue-600 to-purple-600 md:hidden" />
 
       {/* Start Marker */}
       <div className="flex justify-center mb-16">
-        <div className="relative">
-          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 border-4 border-white shadow-2xl flex items-center justify-center animate-bounce">
-            <Target className="w-12 h-12 text-white" />
+        <div className="relative z-20">
+          <div className="w-20 h-20 rounded-full bg-linear-to-br from-green-400 to-emerald-600 border-4 border-white shadow-xl flex items-center justify-center">
+            <TrendingUp className="w-10 h-10 text-white" />
           </div>
           <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-            <span className="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-              Journey Begins
+            <span className="bg-linear-to-r from-green-500 to-emerald-600 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
+              Our Journey
             </span>
           </div>
         </div>
       </div>
 
-      {/* Project Milestones */}
-      <div className="space-y-32 md:space-y-40 mt-24">
+      {/* Milestone Items */}
+      <div className="space-y-24 md:space-y-32 mt-20">
         {projects.map((project, index) => {
           const isLeft = index % 2 === 0;
-          const isVisible = visibleStations.has(index);
+          const isVisible = visibleItems.has(index);
 
           return (
             <div
               key={project.id}
               data-index={index}
-              className="station-marker relative"
+              className="milestone-item relative"
             >
-              {/* Station Circle with Pulse Animation */}
-              <div
-                className={`absolute top-8 md:left-1/2 left-10 md:transform md:-translate-x-1/2 -translate-x-1/2 z-20 transition-all duration-700 ${
+              {/* Timeline Node */}
+              <div className="absolute top-8 left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-x-1/2 z-20">
+                <div className={`relative transition-all duration-700 ${
                   isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
-                }`}
-              >
-                <div className="relative">
+                }`}>
                   {/* Outer Glow */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-purple-400 blur-xl opacity-50 animate-pulse" />
+                  <div className="absolute inset-0 rounded-full bg-[#040936] blur-lg opacity-40 animate-pulse" />
                   
-                  {/* Main Circle */}
-                  <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-white border-4 border-blue-500 shadow-2xl flex items-center justify-center transform hover:scale-110 transition-transform">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-xl md:text-2xl shadow-inner">
+                  {/* Node Circle */}
+                  <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-white border-4 border-[#040936] shadow-xl flex items-center justify-center">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-linear-to-br from-[#040936] to-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-inner">
                       {index + 1}
                     </div>
                   </div>
-                  
-                  {/* Ripple Effect */}
-                  <div className="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-20" style={{ animationDuration: '2s' }} />
+
+                  {/* Pulse Ring */}
+                  <div className="absolute inset-0 rounded-full border-2 border-[#040936] animate-ping opacity-20" />
                 </div>
               </div>
 
-              {/* Connecting Line with Gradient */}
+              {/* Connecting Line (Desktop) */}
               <div
-                className={`hidden md:block absolute top-16 h-1 bg-gradient-to-r transition-all duration-700 ${
+                className={`hidden md:block absolute top-12 h-0.5 bg-linear-to-r transition-all duration-700 ${
                   isLeft
-                    ? 'left-12 right-1/2 from-blue-400 via-purple-400 to-gray-300 mr-12'
-                    : 'right-12 left-1/2 from-gray-300 via-purple-400 to-blue-400 ml-12'
+                    ? 'left-12 right-1/2 from-[#040936] to-gray-300 mr-10'
+                    : 'right-12 left-1/2 from-gray-300 to-[#040936] ml-10'
                 } ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}
                 style={{ transformOrigin: isLeft ? 'right' : 'left' }}
               />
 
-              {/* Project Card */}
+              {/* Milestone Card */}
               <div
                 className={`relative transition-all duration-700 ${
                   isLeft
@@ -207,31 +176,27 @@ function ProjectTimeline({ projects }: { projects: Project[] }) {
                     : 'md:pl-[52%] pl-20 md:pr-0'
                 } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
               >
-                <ProjectMilestoneCard 
-                  project={project} 
-                  index={index}
-                  isLeft={isLeft}
-                />
+                <MilestoneCard project={project} index={index} isLeft={isLeft} />
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* End Marker with Achievement Badge */}
+      {/* End Marker */}
       <div
-        className={`flex justify-center mt-24 transition-all duration-700 ${
-          visibleStations.size === projects.length ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+        className={`flex justify-center mt-20 transition-all duration-700 ${
+          visibleItems.size === projects.length ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
         }`}
       >
-        <div className="relative">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-yellow-400 to-orange-400 blur-2xl opacity-50 animate-pulse" />
-          <div className="relative w-28 h-28 rounded-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 border-4 border-white shadow-2xl flex items-center justify-center transform hover:rotate-12 transition-transform">
-            <Award className="w-14 h-14 text-white" />
+        <div className="relative z-20">
+          <div className="absolute inset-0 rounded-full bg-linear-to-br from-yellow-400 to-orange-500 blur-xl opacity-50 animate-pulse" />
+          <div className="relative w-24 h-24 rounded-full bg-linear-to-br from-yellow-400 via-orange-500 to-red-500 border-4 border-white shadow-xl flex items-center justify-center">
+            <Award className="w-12 h-12 text-white" />
           </div>
           <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-            <span className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
-              Current Achievement
+            <span className="bg-linear-to-r from-yellow-500 to-orange-600 text-white px-5 py-2 rounded-full text-xs font-bold shadow-lg">
+              Achievement Milestone
             </span>
           </div>
         </div>
@@ -265,7 +230,7 @@ export default function TimelineDemo() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 py-20 px-4 flex items-center justify-center">
+      <div className="min-h-screen bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 py-20 px-4 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading projects...</p>
@@ -276,7 +241,7 @@ export default function TimelineDemo() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 py-20 px-4 flex items-center justify-center">
+      <div className="min-h-screen bg-linear-to-br from-gray-50 via-blue-50 to-purple-50 py-20 px-4 flex items-center justify-center">
         <div className="text-center">
           <p className="text-red-600 mb-4">Error loading projects: {error}</p>
           <button
@@ -291,29 +256,80 @@ export default function TimelineDemo() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <div className="inline-block mb-4">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
-              Professional Journey
-            </span>
-          </div>
-          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
-            Airavat Security Service
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore the timeline of achievements, innovations, and milestones that define my professional journey.
-          </p>
+    <div className="min-h-screen bg-linear-to-br from-gray-50 via-white to-gray-100">
+      {/* Hero Section */}
+      <div className="relative bg-linear-to-r from-[#040936] to-[#0a1147] text-white py-20 px-4 overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 border-2 border-white rounded-full" />
+          <div className="absolute bottom-10 right-10 w-40 h-40 border-2 border-white rounded-full" />
+          <div className="absolute top-1/2 left-1/4 w-24 h-24 border-2 border-white rounded-lg transform rotate-45" />
         </div>
 
-        {/* Timeline */}
-        <ProjectTimeline projects={projects} />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+              <Shield className="w-5 h-5" />
+              <span className="text-sm font-semibold uppercase tracking-wider">Our Portfolio</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+              Security Projects
+            </h1>
+            <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+              Discover our successful security implementations across Gujarat. Each project represents our commitment to excellence, professionalism, and unwavering dedication to safety.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                  <CheckCircle2 className="w-6 h-6 text-green-400" />
+                </div>
+                <div className="text-left">
+                  <div className="text-2xl font-bold">{projects.length}+</div>
+                  <div className="text-gray-300 text-xs">Completed Projects</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                  <Building2 className="w-6 h-6 text-blue-400" />
+                </div>
+                <div className="text-left">
+                  <div className="text-2xl font-bold">24/7</div>
+                  <div className="text-gray-300 text-xs">Security Services</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                  <Shield className="w-6 h-6 text-yellow-400" />
+                </div>
+                <div className="text-left">
+                  <div className="text-2xl font-bold">100%</div>
+                  <div className="text-gray-300 text-xs">Client Satisfaction</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        {/* Footer Note */}
-        <div className="text-center mt-16 text-gray-500 text-sm">
-          <p>✨ This timeline is dynamically fetched from the database and can be managed by admins</p>
+      {/* Milestone Timeline Section */}
+      <div className="max-w-6xl mx-auto px-4 py-20">
+        {projects.length > 0 ? (
+          <MilestoneTimeline projects={projects} />
+        ) : (
+          <div className="text-center py-20">
+            <Building2 className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-600 mb-2">No Projects Yet</h3>
+            <p className="text-gray-500">Check back soon for our latest security project.</p>
+          </div>
+        )}
+      </div>
+
+      {/* Footer Note */}
+      <div className="max-w-6xl mx-auto px-4 pb-12">
+        <div className="text-center">
+          <p className="text-sm text-gray-500">
+            ✨ Each milestone represents our commitment to excellence and client satisfaction
+          </p>
         </div>
       </div>
     </div>

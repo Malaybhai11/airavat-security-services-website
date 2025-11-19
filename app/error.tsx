@@ -15,7 +15,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F2F5F9] to-gray-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-[#F2F5F9] to-gray-100 flex items-center justify-center p-4">
       <div className="text-center max-w-md">
         <h1 className="text-6xl font-bold text-red-600 mb-4">500</h1>
         <h2 className="text-3xl font-bold text-gray-800 mb-4">Something went wrong!</h2>
@@ -40,4 +40,3 @@ export default function Error({
     </div>
   );
 }
-

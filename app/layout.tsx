@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description: 'Premier security solutions provider offering 24/7 protection across Gujarat with trained ex-servicemen professionals.',
     images: [
       {
-        url: `${baseUrl}/logo.png`,
+        url: `${baseUrl}/logo2.jpg`,
         width: 1200,
         height: 630,
         alt: 'AIRAVAT Security Service',

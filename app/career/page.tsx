@@ -251,6 +251,9 @@ export default function CareerPage() {
                   <div className="absolute top-0 left-0 w-12 h-22 z-10">
                     <Image src="/Flag.png" alt="" fill className="object-contain" />
                   </div>
+                  <div className="absolute top-0 right-0 w-12 h-22 z-10">
+                    <Image src="/Flag.png" alt="" fill className="object-contain" />
+                  </div>
 
                   <div className="w-16 h-16 bg-[#040936] rounded-lg flex items-center justify-center mb-4 mx-auto text-white mt-4">
                     {benefit.icon}
@@ -276,7 +279,10 @@ export default function CareerPage() {
             variants={fadeInUp}
           >
             {/* Decorative Flags on Application Form */}
-            <div className="absolute top-0 left-0 w-16 h-28 z-10">
+            <div className="absolute top-0 left-0 w-16 h-30 z-10">
+              <Image src="/Flag.png" alt="" fill className="object-contain" />
+            </div>
+            <div className="absolute top-0 right-0 w-16 h-30 z-10">
               <Image src="/Flag.png" alt="" fill className="object-contain" />
             </div>
 
@@ -354,6 +360,9 @@ export default function CareerPage() {
                       <option value="supervisor">Security Supervisor</option>
                       <option value="cctv">CCTV Operator</option>
                       <option value="housekeeping">Housekeeping Staff</option>
+                      <option value="chief-security-officer">Chief Security Officer</option>
+                      <option value="field-security-officer">Field Security Officer</option>
+                      <option value="bouncer">Bouncer</option>
                     </select>
                   </div>
                   <div className="md:col-span-2">
@@ -388,7 +397,7 @@ export default function CareerPage() {
                 <span className="font-semibold">Questions about the application?</span>
               </p>
               <p className="text-sm text-gray-600">
-                Call us at <a href="tel:+919426865263" className="text-[#040936] font-semibold hover:underline">+91 9426865263</a> or email{' '}
+                Call us at <a href="tel:+919913136994" className="text-[#040936] font-semibold hover:underline">+91 9913136994</a> or email{' '}
                 <a href="mailto:airavats1@gmail.com" className="text-[#040936] font-semibold hover:underline">airavats1@gmail.com</a>
               </p>
             </div>
