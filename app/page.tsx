@@ -5,7 +5,7 @@ import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { StructuredData } from './components/StructuredData';
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 // Optimized animation variants
 const fadeInUp = {
@@ -67,7 +67,7 @@ export default function Home() {
     const token = localStorage.getItem('userToken');
     const name = localStorage.getItem('userName');
     const email = localStorage.getItem('userEmail');
-    
+
     if (token && name && email) {
       setIsLoggedIn(true);
       setUserName(name);
@@ -118,7 +118,7 @@ export default function Home() {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     try {
       const res = await fetch('/api/inquiries/create', {
         method: 'POST',
@@ -311,12 +311,12 @@ export default function Home() {
                     Career
                   </Link>
                   <Link
-                  href="/projects"
-                  className="relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1"
-                >
-                  Projects
-                  <span className="absolute bottom-0 left-0 h-0.5 bg-[#040936] transition-all duration-300 w-0 group-hover:w-full"></span>
-                </Link>
+                    href="/projects"
+                    className="relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1"
+                  >
+                    Projects
+                    <span className="absolute bottom-0 left-0 h-0.5 bg-[#040936] transition-all duration-300 w-0 group-hover:w-full"></span>
+                  </Link>
                   <a
                     href="#contact"
                     onClick={() => setIsMenuOpen(false)}
@@ -325,7 +325,7 @@ export default function Home() {
                   >
                     Contact
                   </a>
-                  
+
                   {/* Auth Buttons - Mobile */}
                   <div className="mt-4 pt-4 border-t">
                     {isLoggedIn ? (
@@ -436,7 +436,10 @@ export default function Home() {
                 variants={fadeInUp}
               >
                 {/* Decorative Banners */}
-                <div className="absolute top-0 left-0 w-16 h-24 z-10">
+                <div className="absolute top-0 left-0 w-16 h-26 z-10">
+                  <Image src="/Flag.png" alt="" fill className="object-contain" />
+                </div>
+                <div className="absolute top-0 right-0 w-16 h-26 z-10">
                   <Image src="/Flag.png" alt="" fill className="object-contain" />
                 </div>
 
@@ -454,7 +457,10 @@ export default function Home() {
                 variants={fadeInUp}
               >
                 {/* Decorative Banners */}
-                <div className="absolute top-0 left-0 w-16 h-24 z-10">
+                <div className="absolute top-0 left-0 w-16 h-26 z-10">
+                  <Image src="/Flag.png" alt="" fill className="object-contain" />
+                </div>
+                <div className="absolute top-0 right-0 w-16 h-26 z-10">
                   <Image src="/Flag.png" alt="" fill className="object-contain" />
                 </div>
 
@@ -499,6 +505,9 @@ export default function Home() {
                 <div className="absolute top-0 left-0 w-14 h-35 z-20">
                   <Image src="/Flag.png" alt="" fill className="object-contain" />
                 </div>
+                <div className="absolute top-0 right-0 w-14 h-35 z-20">
+                  <Image src="/Flag.png" alt="" fill className="object-contain" />
+                </div>
 
                 {/* Circular Profile Image with Enhanced Background */}
                 <div className="relative h-80 bg-linear-to-b from-gray-50 via-gray-100 to-gray-200 flex items-center justify-center overflow-hidden group-hover:from-[#040936]/5 group-hover:via-[#040936]/10 group-hover:to-[#040936]/15 transition-all duration-500">
@@ -526,7 +535,7 @@ export default function Home() {
                     <h4 className="text-2xl font-heading font-bold mb-2 text-[#040936] group-hover:text-[#0a1147] transition-colors duration-300">
                       Mr. Meghraj Sinh Jadeja
                     </h4>
-                    <p className="text-base text-[#040936] font-bold mb-1">Founder & Director</p>
+                    <p className="text-base text-[#040936] font-bold mb-1">Founder</p>
                     <p className="text-sm text-gray-600 font-semibold flex items-center justify-center gap-2">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
@@ -563,6 +572,9 @@ export default function Home() {
                 <div className="absolute top-0 left-0 w-14 h-35 z-20">
                   <Image src="/Flag.png" alt="" fill className="object-contain" />
                 </div>
+                <div className="absolute top-0 right-0 w-14 h-35 z-20">
+                  <Image src="/Flag.png" alt="" fill className="object-contain" />
+                </div>
 
                 {/* Circular Profile Image with Enhanced Background */}
                 <div className="relative h-80 bg-linear-to-b from-gray-50 via-gray-100 to-gray-200 flex items-center justify-center overflow-hidden group-hover:from-[#040936]/5 group-hover:via-[#040936]/10 group-hover:to-[#040936]/15 transition-all duration-500">
@@ -590,7 +602,7 @@ export default function Home() {
                     <h4 className="text-2xl font-heading font-bold mb-2 text-[#040936] group-hover:text-[#0a1147] transition-colors duration-300">
                       Mr. Manthan Gadhavi
                     </h4>
-                    <p className="text-base text-[#040936] font-bold mb-1">Founder & Director</p>
+                    <p className="text-base text-[#040936] font-bold mb-1">Co-Founder</p>
                     <p className="text-sm text-gray-600 font-semibold flex items-center justify-center gap-2">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
@@ -600,7 +612,7 @@ export default function Home() {
                   </div>
 
                   <p className="text-[15px] leading-relaxed text-gray-700 mb-5">
-                    Founder with 16 years of honorable service in the Indian Army – Corps of EME (2009-2025). Brings technical operations expertise, maintenance management, and security coordination precision to deliver efficient, reliable, and advanced security solutions.
+                    Co-Founder with 16 years of honorable service in the Indian Army – Corps of EME (2009-2025). Brings technical operations expertise, maintenance management and security coordination precision to deliver efficient, reliable and advanced security solutions.
                   </p>
 
                   {/* Enhanced Expertise Tags */}
@@ -625,6 +637,9 @@ export default function Home() {
               >
                 {/* Decorative Banners */}
                 <div className="absolute top-0 left-0 w-14 h-35 z-20">
+                  <Image src="/Flag.png" alt="" fill className="object-contain" />
+                </div>
+                <div className="absolute top-0 right-0 w-14 h-35 z-20">
                   <Image src="/Flag.png" alt="" fill className="object-contain" />
                 </div>
 
@@ -654,7 +669,7 @@ export default function Home() {
                     <h4 className="text-2xl font-heading font-bold mb-2 text-[#040936] group-hover:text-[#0a1147] transition-colors duration-300">
                       Mr. Mahavir Gadhavi
                     </h4>
-                    <p className="text-base text-[#040936] font-bold mb-1">Manager</p>
+                    <p className="text-base text-[#040936] font-bold mb-1">Director</p>
                     <p className="text-sm text-gray-600 font-semibold flex items-center justify-center gap-2">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
@@ -664,7 +679,7 @@ export default function Home() {
                   </div>
 
                   <p className="text-[15px] leading-relaxed text-gray-700 mb-5">
-                    Dynamic professional with 5+ years in security services industry. Focuses on delivering reliable, professional, and innovative security solutions. Known for strategic thinking, practical approach, and commitment to trust, integrity, and client excellence.
+                    I am an experienced entrepreneur and Director of AIRAVAT Security Service, dedicated to providing reliable and professional security solutions. I value strong client relationships, effective team leadership, and delivering high-quality service with trust and integrity.
                   </p>
 
                   {/* Enhanced Expertise Tags */}
@@ -718,7 +733,10 @@ export default function Home() {
                   variants={fadeInUp}
                 >
                   {/* Decorative Banners */}
-                  <div className="absolute top-0 left-0 w-12 h-20 z-10">
+                  <div className="absolute top-0 left-0 w-12 h-22 z-10">
+                    <Image src="/Flag.png" alt="" fill className="object-contain" />
+                  </div>
+                  <div className="absolute top-0 right-0 w-12 h-22 z-10">
                     <Image src="/Flag.png" alt="" fill className="object-contain" />
                   </div>
 
@@ -768,8 +786,8 @@ export default function Home() {
                     hasImage: true
                   },
                   {
-                    title: 'Door Metal Detectors[DFMD]',
-                    desc: 'High-sensitivity gate detectors for large-scale entry screening with multi-zone detection and real-time alarm indicators.',
+                    title: 'Door Fram Metal Detectors[DFMD]',
+                    desc: 'High-sensitivity door fram detectors for large-scale entry screening with multi-zone detection and real-time alarm indicators.',
                     features: ['Multi-Zone Detection', 'Auto Calibration', 'Visual & Audio Alarms', 'Weather Resistant'],
                     image: '/GateMetalDetector.png',
                     hasImage: true
@@ -788,7 +806,10 @@ export default function Home() {
                     variants={fadeInUp}
                   >
                     {/* Decorative Banners */}
-                    <div className="absolute top-0 left-0 w-12 h-24 z-10">
+                    <div className="absolute top-0 left-0 w-12 h-26 z-10">
+                      <Image src="/Flag.png" alt="" fill className="object-contain" />
+                    </div>
+                    <div className="absolute top-0 right-0 w-12 h-26 z-10">
                       <Image src="/Flag.png" alt="" fill className="object-contain" />
                     </div>
 
@@ -840,7 +861,10 @@ export default function Home() {
                 variants={fadeInUp}
               >
                 {/* Decorative Banners */}
-                <div className="absolute top-0 left-0 w-14 h-20 z-10">
+                <div className="absolute top-0 left-0 w-14 h-22 z-10">
+                  <Image src="/Flag.png" alt="" fill className="object-contain" />
+                </div>
+                <div className="absolute top-0 right-0 w-14 h-22 z-10">
                   <Image src="/Flag.png" alt="" fill className="object-contain" />
                 </div>
 
@@ -864,11 +888,7 @@ export default function Home() {
                 </div>
               </motion.div>
             </div>
-
-
-
           </div>
-
         </section>
 
         {/* Projects Section */}
@@ -894,7 +914,10 @@ export default function Home() {
               variants={fadeIn}
             >
               {/* Decorative Banners */}
-              <div className="absolute top-0 left-0 w-16 h-28 z-10">
+              <div className="absolute top-0 left-0 w-16 h-30 z-10">
+                <Image src="/Flag.png" alt="" fill className="object-contain" />
+              </div>
+              <div className="absolute top-0 right-0 w-16 h-30 z-10">
                 <Image src="/Flag.png" alt="" fill className="object-contain" />
               </div>
 
@@ -954,7 +977,10 @@ export default function Home() {
                 variants={fadeInUp}
               >
                 {/* Decorative Banners */}
-                <div className="absolute top-0 left-0 w-14 h-20 z-10">
+                <div className="absolute top-0 left-0 w-14 h-22 z-10">
+                  <Image src="/Flag.png" alt="" fill className="object-contain" />
+                </div>
+                <div className="absolute top-0 right-0 w-14 h-22 z-10">
                   <Image src="/Flag.png" alt="" fill className="object-contain" />
                 </div>
 
@@ -1011,7 +1037,10 @@ export default function Home() {
                 variants={fadeInUp}
               >
                 {/* Decorative Banners */}
-                <div className="absolute top-0 left-0 w-14 h-20 z-10">
+                <div className="absolute top-0 left-0 w-14 h-22 z-10">
+                  <Image src="/Flag.png" alt="" fill className="object-contain" />
+                </div>
+                <div className="absolute top-0 right-0 w-14 h-22 z-10">
                   <Image src="/Flag.png" alt="" fill className="object-contain" />
                 </div>
 
@@ -1051,12 +1080,15 @@ export default function Home() {
               variants={fadeInUp}
             >
               {/* Decorative Banners */}
-              <div className="absolute top-0 left-0 w-16 h-24 z-10">
+              <div className="absolute top-0 left-0 w-16 h-30 z-10">
+                <Image src="/Flag.png" alt="" fill className="object-contain" />
+              </div>
+              <div className="absolute top-0 right-0 w-16 h-30 z-10">
                 <Image src="/Flag.png" alt="" fill className="object-contain" />
               </div>
 
               <h3 className="text-4xl font-heading font-bold text-[#040936] mb-2 text-center tracking-tight pt-6">Send Enquiry</h3>
-              
+
               <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-4 pt-10">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
@@ -1189,7 +1221,7 @@ export default function Home() {
         <footer className="bg-[#040936] backdrop-blur-sm text-white py-12 px-6 relative">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 mb-8">
-              {/* Company Info with New Logo */}
+              {/* Company Info */}
               <div>
                 <div className="flex items-center space-x-3 mb-4">
                   <div>
@@ -1205,17 +1237,11 @@ export default function Home() {
                 <p className="text-gray-400 text-sm leading-relaxed">
                   Professional security solutions with military discipline and modern technology across Gujarat.
                 </p>
-                <p className="text-gray-400 text-sm leading-relaxed mt-4">
-                      Built By Malay Raval, Vivek Pankhaniya and Kedar Thakar
-                </p>
-                <p className="text-gray-400 text-sm leading-relaxed mt-4">
-                      +91 7016870163,+91 9662955278,+91 9327370047
-                </p>
               </div>
 
               {/* Quick Links */}
               <div>
-                <h5 className="font-bold mb-4 text-[16px]">Quick links</h5>
+                <h5 className="font-bold mb-4 text-[16px]">Quick Links</h5>
                 <nav aria-label="Footer navigation">
                   <div className="space-y-2">
                     {['Home', 'About Us', 'Services', 'Career', 'Contact'].map((link) => (
@@ -1235,35 +1261,167 @@ export default function Home() {
               <div>
                 <h5 className="font-bold mb-4 text-[16px]">Service Areas</h5>
                 <p className="text-gray-400 text-[15px] leading-relaxed mb-4">
-                  Serving all districts of Gujarat including Ahmedabad, Surat, Vadodara, Rajkot, Jamnagar, and more with 24/7 security solutions.
+                  Serving all districts of Gujarat including Ahmedabad, Rajkot, Jamnagar, and more with 24/7 security solutions.
                 </p>
-                <div className="flex items-center gap-2 text-gray-400 text-sm">
+                <div className="flex items-center gap-2 text-gray-400 text-sm mb-6">
                   <svg className="w-5 h-5 text-[#dec3a0]" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                   </svg>
                   <span>+91 9426865263</span>
                 </div>
-                <a
-                  href="https://instagram.com/airavat_security_service"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-pink-600 hover:text-pink-700 text-3xl"
-                >
-                  <FaInstagram />
-                </a>
 
+                {/* Social Media Icons */}
+                <div className="flex gap-3">
+                  {/* Instagram Icon */}
+                  <a
+                    href="https://instagram.com/airavat_security_service"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group"
+                    aria-label="Follow us on Instagram"
+                  >
+                    <div className="w-11 h-11 rounded-full border-2 border-gray-400 flex items-center justify-center transition-all duration-300 group-hover:border-[#dec3a0] group-hover:bg-[#dec3a0] transform group-hover:-translate-y-1 group-hover:shadow-lg">
+                      <FaInstagram className="text-gray-300 text-xl transition-colors duration-300 group-hover:text-[#040936]" />
+                    </div>
+                  </a>
+
+                  {/* WhatsApp Icon */}
+                  <a
+                    href="https://wa.me/919913136994"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group"
+                    aria-label="Chat with us on WhatsApp"
+                  >
+                    <div className="w-11 h-11 rounded-full border-2 border-gray-400 flex items-center justify-center transition-all duration-300 group-hover:border-[#dec3a0] group-hover:bg-[#dec3a0] transform group-hover:-translate-y-1 group-hover:shadow-lg">
+                      <FaWhatsapp className="text-gray-300 text-xl transition-colors duration-300 group-hover:text-[#040936]" />
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
 
+            {/* Team Information Section - UPDATED WITH EMAILS */}
+            <div className="border-t border-gray-800 pt-8 pb-6">
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                {/* Management */}
+                <div className="bg-white/5 backdrop-blur-sm p-5 rounded-lg border border-gray-700/50 hover:border-[#dec3a0]/50 transition-all duration-300">
+                  <div className="flex items-center gap-2 mb-3">
+                    <svg className="w-5 h-5 text-[#dec3a0]" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                    </svg>
+                    <h6 className="font-bold text-[15px] text-[#dec3a0]">Managed By</h6>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-2">
+                      <span className="w-2 h-2 bg-[#dec3a0] rounded-full mt-1.5"></span>
+                      <div className="flex-1">
+                        <p className="font-semibold text-gray-300 text-sm mb-1">Kedar Thakar</p>
+                        <div className="flex flex-col gap-1">
+                          <a
+                            href="tel:+919662955278"
+                            className="text-gray-400 hover:text-[#dec3a0] transition-colors text-xs flex items-center gap-1.5"
+                          >
+                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            </svg>
+                            +91 96629 55278
+                          </a>
+                          <a
+                            href="mailto:kedarthakar5278@gmail.com"
+                            className="text-gray-400 hover:text-[#dec3a0] transition-colors text-xs flex items-center gap-1.5"
+                          >
+                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                            </svg>
+                            kedarthakar5278@gmail.com
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Development Team */}
+                <div className="bg-white/5 backdrop-blur-sm p-5 rounded-lg border border-gray-700/50 hover:border-[#dec3a0]/50 transition-all duration-300">
+                  <div className="flex items-center gap-2 mb-3">
+                    <svg className="w-5 h-5 text-[#dec3a0]" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                    <h6 className="font-bold text-[15px] text-[#dec3a0]">Built By</h6>
+                  </div>
+                  <div className="space-y-3">
+                    {/* Vivek Pankhaniya */}
+                    <div className="flex items-start gap-2">
+                      <span className="w-2 h-2 bg-[#dec3a0] rounded-full mt-1.5"></span>
+                      <div className="flex-1">
+                        <p className="font-semibold text-gray-300 text-sm mb-1">Vivek Pankhaniya</p>
+                        <div className="flex flex-col gap-1">
+                          <a
+                            href="tel:+919327370047"
+                            className="text-gray-400 hover:text-[#dec3a0] transition-colors text-xs flex items-center gap-1.5"
+                          >
+                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            </svg>
+                            +91 9327370047
+                          </a>
+                          <a
+                            href="mailto:vivekpankhaniya43@gmail.com"
+                            className="text-gray-400 hover:text-[#dec3a0] transition-colors text-xs flex items-center gap-1.5"
+                          >
+                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                            </svg>
+                            vivekpankhaniya43@gmail.com
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Malay Raval */}
+                    <div className="flex items-start gap-2">
+                      <span className="w-2 h-2 bg-[#dec3a0] rounded-full mt-1.5"></span>
+                      <div className="flex-1">
+                        <p className="font-semibold text-gray-300 text-sm mb-1">Malay Raval</p>
+                        <div className="flex flex-col gap-1">
+                          <a
+                            href="tel:+917016870163"
+                            className="text-gray-400 hover:text-[#dec3a0] transition-colors text-xs flex items-center gap-1.5"
+                          >
+                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            </svg>
+                            +91 70168 70163
+                          </a>
+                          <a
+                            href="mailto:malay.raval11@gmail.com"
+                            className="text-gray-400 hover:text-[#dec3a0] transition-colors text-xs flex items-center gap-1.5"
+                          >
+                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                            </svg>
+                            malay.raval11@gmail.com
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             {/* Copyright */}
-            <div className="border-t border-gray-800 pt-8 text-center">
+            <div className="border-t border-gray-800 pt-6 text-center">
               <p className="text-gray-400 text-[14px]">
                 © 2025 Airavat Security Service. All rights reserved. Trusted Security Solutions Across Gujarat
               </p>
             </div>
           </div>
         </footer>
-
       </div>
     </div>
   );
