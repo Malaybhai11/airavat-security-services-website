@@ -115,6 +115,20 @@ export default function Home() {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMenuOpen]);
 
+  // Handle smooth scroll navigation
+  const handleScrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navHeight = 80; // navbar height in pixels
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navHeight,
+        behavior: 'smooth'
+      });
+    }
+    setIsMenuOpen(false);
+  };
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -169,13 +183,21 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white relative">
+      <style>{`
+        html {
+          scroll-behavior: smooth;
+        }
+        section[id] {
+          scroll-margin-top: 80px;
+        }
+      `}</style>
       <StructuredData />
       {/* Main Content Wrapper */}
       <div className="relative z-10">
         {/* Skip to main content - Accessibility */}
         <a
           href="#home"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-[#040936] text-white px-4 py-2 rounded z-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#040936]/50"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-[#040936] text-white px-4 py-2 rounded z-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#04093[...]
         >
           Skip to main content
         </a>
@@ -193,7 +215,11 @@ export default function Home() {
             <div className="flex justify-between items-center h-20">
               {/* Logo */}
               <motion.a
-                href="/admin"
+                href="#home"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollToSection('home');
+                }}
                 className="flex items-center space-x-3 group"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -225,7 +251,11 @@ export default function Home() {
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
-                    className={`relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1 ${activeSection === item.toLowerCase() ? 'text-[#040936]' : ''
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScrollToSection(item.toLowerCase());
+                    }}
+                    className={`relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#04[...]
                       }`}
                     aria-current={activeSection === item.toLowerCase() ? 'page' : undefined}
                   >
@@ -238,21 +268,25 @@ export default function Home() {
 
                 <Link
                   href="/career"
-                  className="relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1"
+                  className="relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#04093[...]
                 >
                   Career
                   <span className="absolute bottom-0 left-0 h-0.5 bg-[#040936] transition-all duration-300 w-0 group-hover:w-full"></span>
                 </Link>
                 <Link
                   href="/projects"
-                  className="relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1"
+                  className="relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#04093[...]
                 >
                   Projects
                   <span className="absolute bottom-0 left-0 h-0.5 bg-[#040936] transition-all duration-300 w-0 group-hover:w-full"></span>
                 </Link>
                 <a
                   href="#contact"
-                  className={`relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1 ${activeSection === 'contact' ? 'text-[#040936]' : ''
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScrollToSection('contact');
+                  }}
+                  className={`relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0409[...]
                     }`}
                   aria-current={activeSection === 'contact' ? 'page' : undefined}
                 >
@@ -281,7 +315,6 @@ export default function Home() {
             </div>
 
             {/* Mobile Menu */}
-            {/* Mobile Menu */}
             <AnimatePresence>
               {isMenuOpen && (
                 <motion.div
@@ -298,11 +331,9 @@ export default function Home() {
                       href={`#${item.toLowerCase()}`}
                       onClick={(e) => {
                         e.preventDefault();
-                        const id = item.toLowerCase();
-                        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-                        setTimeout(() => setIsMenuOpen(false), 300);
+                        handleScrollToSection(item.toLowerCase());
                       }}
-                      className={`block py-3 text-gray-700 hover:text-[#040936] hover:pl-2 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded ${activeSection === item.toLowerCase() ? 'text-[#040936] font-semibold' : ''}`}
+                      className={`block py-3 text-gray-700 hover:text-[#040936] hover:pl-2 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded ${ac[...]
                     >
                       {item}
                     </a>
@@ -329,10 +360,9 @@ export default function Home() {
                     href="#contact"
                     onClick={(e) => {
                       e.preventDefault();
-                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                      setTimeout(() => setIsMenuOpen(false), 300);
+                      handleScrollToSection('contact');
                     }}
-                    className={`block py-3 text-gray-700 hover:text-[#040936] hover:pl-2 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded ${activeSection === 'contact' ? 'text-[#040936] font-semibold' : ''}`}
+                    className={`block py-3 text-gray-700 hover:text-[#040936] hover:pl-2 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded ${acti[...]
                   >
                     Contact
                   </a>
@@ -379,13 +409,21 @@ export default function Home() {
               >
                 <a
                   href="#contact"
-                  className="px-8 py-3.5 bg-[#040936] text-white rounded-lg font-semibold text-[15px] hover:bg-[#0a1147] transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-[#040936]/50 transition-all duration-300"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScrollToSection('contact');
+                  }}
+                  className="px-8 py-3.5 bg-[#040936] text-white rounded-lg font-semibold text-[15px] hover:bg-[#0a1147] transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible[...]
                 >
                   Get Started
                 </a>
                 <a
                   href="#services"
-                  className="px-8 py-3.5 bg-white text-[#040936] rounded-lg font-semibold text-[15px] border-2 border-[#040936] hover:bg-[#040936] hover:text-white transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-[#040936]/50 transition-all duration-300"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScrollToSection('services');
+                  }}
+                  className="px-8 py-3.5 bg-white text-[#040936] rounded-lg font-semibold text-[15px] border-2 border-[#040936] hover:bg-[#040936] hover:text-white transform hover:-translate-y-1 hover[...]
                 >
                   Our Services
                 </a>
