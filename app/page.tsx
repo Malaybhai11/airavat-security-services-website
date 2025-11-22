@@ -61,27 +61,26 @@ export default function Home() {
 
   // Smooth scroll and loading effect
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = 'smooth';
-    setTimeout(() => setIsLoading(false), 500);
-
+    // Handle loading animation
+    const timeoutId = setTimeout(() => setIsLoading(false), 500);
+  
     // Check if user is logged in
     const token = localStorage.getItem('userToken');
     const name = localStorage.getItem('userName');
     const email = localStorage.getItem('userEmail');
-
+  
     if (token && name && email) {
       setIsLoggedIn(true);
       setUserName(name);
       setFormData(prev => ({
         ...prev,
-        name: name,
-        email: email
+        name,
+        email
       }));
     }
-
-    return () => {
-      document.documentElement.style.scrollBehavior = 'auto';
-    };
+  
+    // Cleanup loading timeout
+    return () => clearTimeout(timeoutId);
   }, []);
 
   // Active section tracking
@@ -282,6 +281,7 @@ export default function Home() {
             </div>
 
             {/* Mobile Menu */}
+            {/* Mobile Menu */}
             <AnimatePresence>
               {isMenuOpen && (
                 <motion.div
@@ -296,13 +296,18 @@ export default function Home() {
                     <a
                       key={item}
                       href={`#${item.toLowerCase()}`}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={`block py-3 text-gray-700 hover:text-[#040936] hover:pl-2 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded ${activeSection === item.toLowerCase() ? 'text-[#040936] font-semibold' : ''
-                        }`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const id = item.toLowerCase();
+                        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                        setTimeout(() => setIsMenuOpen(false), 300);
+                      }}
+                      className={`block py-3 text-gray-700 hover:text-[#040936] hover:pl-2 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded ${activeSection === item.toLowerCase() ? 'text-[#040936] font-semibold' : ''}`}
                     >
                       {item}
                     </a>
                   ))}
+            
                   {/* Career link - Mobile */}
                   <Link
                     href="/career"
@@ -311,6 +316,7 @@ export default function Home() {
                   >
                     Career
                   </Link>
+            
                   <Link
                     href="/projects"
                     onClick={() => setIsMenuOpen(false)}
@@ -318,11 +324,15 @@ export default function Home() {
                   >
                     Projects
                   </Link>
+            
                   <a
                     href="#contact"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block py-3 text-gray-700 hover:text-[#040936] hover:pl-2 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded ${activeSection === 'contact' ? 'text-[#040936] font-semibold' : ''
-                      }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                      setTimeout(() => setIsMenuOpen(false), 300);
+                    }}
+                    className={`block py-3 text-gray-700 hover:text-[#040936] hover:pl-2 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded ${activeSection === 'contact' ? 'text-[#040936] font-semibold' : ''}`}
                   >
                     Contact
                   </a>
