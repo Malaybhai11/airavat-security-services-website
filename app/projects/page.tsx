@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Calendar, ExternalLink, Building2, Shield, CheckCircle2, ArrowRight, MapPin, Award, TrendingUp } from 'lucide-react';
+import { Calendar, ExternalLink, Building2, Shield, CheckCircle2, ArrowRight, MapPin, Award, TrendingUp, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 // Types
@@ -256,7 +256,18 @@ export default function TimelineDemo() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 via-white to-gray-100">
+      {/* Back to Home Button */}
+      <div className="w-full flex justify-end px-4 pt-6 lg:pt-8 lg:px-10 absolute z-30">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 hover:bg-gray-100 shadow-lg rounded-lg text-[#040936] font-semibold border border-gray-200 transition-all"
+          style={{ position: "fixed", top: "24px", right: "32px", zIndex: 50 }}
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Home
+        </Link>
+      </div>
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-[#040936] to-[#0a1147] text-white py-20 px-4 overflow-hidden">
         {/* Decorative Elements */}
