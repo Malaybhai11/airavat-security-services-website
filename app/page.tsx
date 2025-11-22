@@ -779,7 +779,7 @@ export default function Home() {
               >
                 {[
                   {
-                    title: 'Handheld Metal Detectors',
+                    title: 'Hand Metal Detectors[HMD]',
                     desc: 'Professional-grade handheld metal detectors with trained operators for quick and reliable screening at entry points and security checkpoints.',
                     features: ['Pinpoint Detection', 'Adjustable Sensitivity', 'Audio & Vibration Alert', 'Lightweight & Portable'],
                     image: '/MetalDetector.png',
