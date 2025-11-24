@@ -61,8 +61,8 @@ export default function Home() {
 
   // Smooth scroll and loading effect
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = 'smooth';
-    setTimeout(() => setIsLoading(false), 500);
+    // Handle loading animation
+    const timeoutId = setTimeout(() => setIsLoading(false), 500);
 
     // Check if user is logged in
     const token = localStorage.getItem('userToken');
@@ -74,14 +74,13 @@ export default function Home() {
       setUserName(name);
       setFormData(prev => ({
         ...prev,
-        name: name,
-        email: email
+        name,
+        email
       }));
     }
 
-    return () => {
-      document.documentElement.style.scrollBehavior = 'auto';
-    };
+    // Cleanup loading timeout
+    return () => clearTimeout(timeoutId);
   }, []);
 
   // Active section tracking
@@ -115,6 +114,39 @@ export default function Home() {
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMenuOpen]);
+
+  // Enhanced smooth scroll handler for mobile and desktop
+  const handleScrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (!element) return;
+
+    const navbarHeight = 80; // Fixed navbar height
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - navbarHeight;
+
+    // Close menu after scroll completes (not during animation)
+    let scrollTimeout: NodeJS.Timeout;
+    const handleScrollEnd = () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsMenuOpen(false);
+        window.removeEventListener('scroll', handleScrollEnd);
+      }, 100); // Small delay after scroll stops
+    };
+
+    // Only add listener if menu is open
+    if (isMenuOpen) {
+      window.addEventListener('scroll', handleScrollEnd);
+    }
+
+    // Use requestAnimationFrame for smoother scrolling
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    });
+  };
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -199,7 +231,11 @@ export default function Home() {
             <div className="flex justify-between items-center h-20">
               {/* Logo */}
               <motion.a
-                href="/admin"
+                href="#home"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollToSection('home');
+                }}
                 className="flex items-center space-x-3 group"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -231,7 +267,11 @@ export default function Home() {
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
-                    className={`relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1 ${activeSection === item.toLowerCase() ? 'text-[#040936]' : ''
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScrollToSection(item.toLowerCase());
+                    }}
+                    className={`relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1 ${activeSection === item.toLowerCase() ? 'text-[#040936]' : ''
                       }`}
                     aria-current={activeSection === item.toLowerCase() ? 'page' : undefined}
                   >
@@ -258,6 +298,10 @@ export default function Home() {
                 </Link>
                 <a
                   href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScrollToSection('contact');
+                  }}
                   className={`relative text-gray-700 font-medium text-[15px] transition-colors duration-300 hover:text-[#040936] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded px-2 py-1 ${activeSection === 'contact' ? 'text-[#040936]' : ''
                     }`}
                   aria-current={activeSection === 'contact' ? 'page' : undefined}
@@ -287,6 +331,7 @@ export default function Home() {
             </div>
 
             {/* Mobile Menu */}
+            {/* Mobile Menu */}
             <AnimatePresence>
               {isMenuOpen && (
                 <motion.div
@@ -307,6 +352,7 @@ export default function Home() {
                       {item}
                     </a>
                   ))}
+
                   {/* Career link - Mobile */}
                   <Link
                     href="/career"
@@ -315,6 +361,7 @@ export default function Home() {
                   >
                     Career
                   </Link>
+
                   <Link
                     href="/projects"
                     onClick={() => setIsMenuOpen(false)}
@@ -322,11 +369,14 @@ export default function Home() {
                   >
                     Projects
                   </Link>
+
                   <a
                     href="#contact"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block py-3 text-gray-700 hover:text-[#040936] hover:pl-2 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded ${activeSection === 'contact' ? 'text-[#040936] font-semibold' : ''
-                      }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScrollToSection('contact');
+                    }}
+                    className={`block py-3 text-gray-700 hover:text-[#040936] hover:pl-2 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#040936] rounded ${activeSection === 'contact' ? 'text-[#040936] font-semibold' : ''}`}
                   >
                     Contact
                   </a>
@@ -373,12 +423,20 @@ export default function Home() {
               >
                 <a
                   href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScrollToSection('contact');
+                  }}
                   className="px-8 py-3.5 bg-[#040936] text-white rounded-lg font-semibold text-[15px] hover:bg-[#0a1147] transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-[#040936]/50 transition-all duration-300"
                 >
                   Get Started
                 </a>
                 <a
                   href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScrollToSection('services');
+                  }}
                   className="px-8 py-3.5 bg-white text-[#040936] rounded-lg font-semibold text-[15px] border-2 border-[#040936] hover:bg-[#040936] hover:text-white transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-[#040936]/50 transition-all duration-300"
                 >
                   Our Services
