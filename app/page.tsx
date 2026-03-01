@@ -1097,9 +1097,17 @@ export default function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     <div>
-                      <p className="font-semibold text-[#040936] text-[15px]">Address</p>
+                      <p className="font-semibold text-[#040936] text-[15px]">Address 1</p>
                       <p className="text-gray-600 text-[15px] leading-relaxed">1st Floor, Akash Complex, Nilkamal Chowk, Khodiyar Colony, Jamnagar, Gujarat - 361 006</p>
-                      <p className="text-gray-600 text-[15px] leading-relaxed">H-230, OPP. PANCHKOSHI 'B' POLICE STATION, DARED GIDC, PHASE 2, JAMANGAR, Gujarat - 361 004</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start transition-all duration-300 pl-5">
+                    <svg className="w-5 h-5 text-[#040936] mr-3 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-[#040936] text-[15px]">Address 2</p>
+                      <p className="text-gray-600 text-[15px] leading-relaxed">H-230, OPP. Panchkoshi 'B' Police Station, Dared GIDC, Phase 2, Jamnagar, Gujarat - 361 004</p>
                     </div>
                   </div>
 
