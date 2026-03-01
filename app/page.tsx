@@ -231,7 +231,7 @@ export default function Home() {
             <div className="flex justify-between items-center h-20">
               {/* Logo */}
               <motion.a
-                href="#home"
+                href="/admin"
                 onClick={(e) => {
                   e.preventDefault();
                   handleScrollToSection('home');
