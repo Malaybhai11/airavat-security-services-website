@@ -527,13 +527,81 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              className="grid md:grid-cols-3 gap-10"
+              className="grid md:grid-cols-2 gap-10"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
             >
-              {/* Leader 1 - Mr. Meghraj Sinh Jadeja */}
+
+              {/* Leader 1 - NN Gojiya (CEO) */}
+              <motion.div
+                className="backdrop-blur-sm rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-[#040936] transform hover:-translate-y-4 transition-all duration-500 group relative"
+                variants={fadeInUp}
+              >
+                {/* Decorative Banners */}
+                <div className="absolute top-0 left-0 w-14 h-35 z-20">
+                  <Image src="/Flag.png" alt="" fill className="object-contain" />
+                </div>
+                <div className="absolute top-0 right-0 w-14 h-35 z-20">
+                  <Image src="/Flag.png" alt="" fill className="object-contain" />
+                </div>
+
+                {/* Circular Profile Image with Enhanced Background */}
+                <div className="relative h-80 bg-linear-to-b from-gray-50 via-gray-100 to-gray-200 flex items-center justify-center overflow-hidden group-hover:from-[#040936]/5 group-hover:via-[#040936]/10 group-hover:to-[#040936]/15 transition-all duration-500">
+                  {/* Decorative Ring Background */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-64 h-64 rounded-full border border-gray-300/40 group-hover:border-[#040936]/20 transition-all duration-500"></div>
+                    <div className="absolute w-72 h-72 rounded-full border border-gray-200/30 group-hover:border-[#040936]/15 transition-all duration-500"></div>
+                  </div>
+
+                  {/* Profile Image - Rounded/Circular */}
+                  <div className="relative z-10 w-56 h-56 rounded-full overflow-hidden border-[5px] border-[#040936] shadow-2xl group-hover:scale-110 group-hover:border-[#0a1147] group-hover:shadow-[0_20px_60px_rgba(4,9,54,0.4)] transition-all duration-700">
+                    <Image
+                      src="/Gojiya.png"
+                      alt="NN Gojiya - Chief Executive Officer"
+                      fill
+                      className="object-cover object-top"
+                      priority
+                    />
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="p-7">
+                  <div className="text-center mb-5 pb-5 border-b-2 border-gray-200">
+                    <h4 className="text-2xl font-heading font-bold mb-2 text-[#040936] group-hover:text-[#0a1147] transition-colors duration-300">
+                      NN Gojiya
+                    </h4>
+                    <p className="text-base text-[#040936] font-bold mb-1">Chief Executive Officer</p>
+                    <p className="text-sm text-gray-600 font-semibold flex items-center justify-center gap-2">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                      </svg>
+                      Chief Executive Officer | Army Veteran | Strategic Leader
+                    </p>
+                  </div>
+
+                  <p className="text-[15px] leading-relaxed text-gray-700 mb-5">
+                    NN Gojiya is a proud Indian Army Veteran with 20 years of dedicated service, now serving as the Chief Executive Officer of Airavat Security Service, Dwarkadhish Paper Products, Warrior Enterprise, and Drink It Mineral Water. Guided by military discipline, strategic vision, and uncompromising integrity, he leads multiple businesses with precision, professionalism, and a mission-first mindset. From advanced security operations and risk management to manufacturing and essential consumer services, his leadership reflects structure, accountability, and continuous growth. Though his uniform has changed, his mission remains the same — to protect, to build, and to lead from the front while setting new benchmarks across multipurpose industries.
+                  </p>
+
+                  {/* Enhanced Expertise Tags */}
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    <span className="px-4 py-2 bg-linear-to-r from-[#040936] to-[#0a1147] text-white rounded-full text-xs font-bold shadow-md hover:shadow-lg transition-shadow duration-300">
+                      Strategic Leadership
+                    </span>
+                    <span className="px-4 py-2 bg-linear-to-r from-gray-100 to-gray-200 text-[#040936] rounded-full text-xs font-bold hover:from-gray-200 hover:to-gray-300 transition-all duration-300">
+                      Crisis Response
+                    </span>
+                    <span className="px-4 py-2 bg-linear-to-r from-gray-100 to-gray-200 text-[#040936] rounded-full text-xs font-bold hover:from-gray-200 hover:to-gray-300 transition-all duration-300">
+                      Threat Management
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Leader 2 - Mr. Meghraj Sinh Jadeja */}
               <motion.div
                 className="backdrop-blur-sm rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-[#040936] transform hover:-translate-y-4 transition-all duration-500 group relative"
                 variants={fadeInUp}
@@ -669,7 +737,7 @@ export default function Home() {
 
               {/* Leader 3 - Mr. Mahavir Gadhavi */}
               <motion.div
-                className="bg-linear-to-br from-white to-gray-50/80 backdrop-blur-sm rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-[#040936] transform hover:-translate-y-4 transition-all duration-500 group relative"
+                className="backdrop-blur-sm rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-[#040936] transform hover:-translate-y-4 transition-all duration-500 group relative"
                 variants={fadeInUp}
               >
                 {/* Decorative Banners */}
@@ -733,6 +801,7 @@ export default function Home() {
                   </div>
                 </div>
               </motion.div>
+
             </motion.div>
           </div>
         </section>
@@ -1029,7 +1098,8 @@ export default function Home() {
                     </svg>
                     <div>
                       <p className="font-semibold text-[#040936] text-[15px]">Address</p>
-                      <p className="text-gray-600 text-[15px] leading-relaxed">1st Floor, Akash Complex, Nilkamal Chowk, Khodiyar Colony, Jamnagar, Gujarat - 361 006</p>
+                      <p className="text-gray-600 text-[15px] leading-relaxed">1st Floor, Akash Complex, Nilkamal Chowk, Khodiyar Colony, Jamnagar, Gujarat - 361 006</p><br></br>
+                      <p className="text-gray-600 text-[15px] leading-relaxed">H-230, OPP. PANCHKOSHI 'B' POLICE STATION, DARED GIDC, PHASE 2, JAMANGAR, Gujarat -  361 004</p>
                     </div>
                   </div>
 
@@ -1039,7 +1109,7 @@ export default function Home() {
                     </svg>
                     <div>
                       <p className="font-semibold text-[#040936] text-[15px]">Phone</p>
-                      <p className="text-gray-600 text-[15px]">+91 9426865263, +91 9913136994, +91 9724954080</p>
+                      <p className="text-gray-600 text-[14px]">+91 99815 43499, +91 9426865263, +91 9913136994, +91 9724954080</p>
                     </div>
                   </div>
 
