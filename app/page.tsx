@@ -449,6 +449,7 @@ export default function Home() {
         {/* Client Logo Carousel Section */}
         <section className="py-14 px-6 bg-gray-50/80 backdrop-blur-sm relative overflow-hidden border-y border-gray-100">
           <div className="max-w-7xl mx-auto">
+
             <motion.div
               className="text-center mb-10"
               initial="hidden"
@@ -462,50 +463,57 @@ export default function Home() {
             </motion.div>
 
             {/* Infinite Scrolling Marquee */}
-            <div className="relative overflow-visible">
-              {/* Left fade gradient */}
-              <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
-              {/* Right fade gradient */}
-              <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
+            <div
+              className="relative overflow-hidden"
+              style={{
+                maskImage:
+                  "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+                WebkitMaskImage:
+                  "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+              }}
+            >
 
               <div className="flex gap-12 clients-carousel-track">
-                {/* First set of logos */}
+
                 {[
                   { src: '/1000032540-removebg-preview.png', alt: 'The Emerald Club' },
                   { src: '/1000032542-removebg-preview.png', alt: 'Kataria - Delivering Dreams' },
                   { src: '/1000032544-removebg-preview.png', alt: 'Topland' },
                   { src: '/1000032547-removebg-preview.png', alt: 'Crystal - The Mark Of Success' },
                   { src: '/1000032552-removebg-preview.png', alt: 'Yash Pinnacle' },
-                ].concat([
-                  { src: '/1000032540-removebg-preview.png', alt: 'The Emerald Club' },
-                  { src: '/1000032542-removebg-preview.png', alt: 'Kataria - Delivering Dreams' },
-                  { src: '/1000032544-removebg-preview.png', alt: 'Topland' },
-                  { src: '/1000032547-removebg-preview.png', alt: 'Crystal - The Mark Of Success' },
-                  { src: '/1000032552-removebg-preview.png', alt: 'Yash Pinnacle' },
-                ]).map((logo, index) => (
-                  <div
-                    key={index}
-                    className="flex-shrink-0 group py-2"
-                  >
-                    <div className="relative w-36 h-24 flex items-center justify-center bg-white rounded-xl border border-gray-200 px-4 py-3 shadow-sm group-hover:shadow-lg group-hover:border-[#040936]/40 group-hover:-translate-y-1 transition-all duration-300">
-                      <Image
-                        src={logo.src}
-                        alt={logo.alt}
-                        fill
-                        className="object-contain p-3"
-                        sizes="144px"
-                      />
+                ]
+                  .concat([
+                    { src: '/1000032540-removebg-preview.png', alt: 'The Emerald Club' },
+                    { src: '/1000032542-removebg-preview.png', alt: 'Kataria - Delivering Dreams' },
+                    { src: '/1000032544-removebg-preview.png', alt: 'Topland' },
+                    { src: '/1000032547-removebg-preview.png', alt: 'Crystal - The Mark Of Success' },
+                    { src: '/1000032552-removebg-preview.png', alt: 'Yash Pinnacle' },
+                  ])
+                  .map((logo, index) => (
+                    <div
+                      key={index}
+                      className="flex-shrink-0 group py-2"
+                    >
+                      <div className="relative w-36 h-24 flex items-center justify-center bg-white rounded-xl border border-gray-200 px-4 py-3 shadow-sm group-hover:shadow-lg group-hover:border-[#040936]/40 group-hover:-translate-y-1 transition-all duration-300">
+                        <Image
+                          src={logo.src}
+                          alt={logo.alt}
+                          fill
+                          className="object-contain p-3"
+                          sizes="144px"
+                        />
+                      </div>
+
+                      <p className="text-center text-xs text-gray-400 mt-2 font-medium group-hover:text-[#040936] transition-colors duration-300 max-w-[144px] truncate">
+                        {logo.alt}
+                      </p>
                     </div>
-                    <p className="text-center text-xs text-gray-400 mt-2 font-medium group-hover:text-[#040936] transition-colors duration-300 max-w-[144px] truncate">
-                      {logo.alt}
-                    </p>
-                  </div>
-                ))}
+                  ))}
+
               </div>
             </div>
+
           </div>
-
-
         </section>
 
         {/* About Section */}
