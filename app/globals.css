@@ -37,3 +37,18 @@ section[id] {
   animation: fadeInUp 0.6s ease-out forwards;
   opacity: 0;
 }
+
+/* Clients Carousel */
+.clients-carousel-track {
+  animation: clients-scroll 22s linear infinite;
+  width: max-content;
+}
+
+.clients-carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes clients-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
