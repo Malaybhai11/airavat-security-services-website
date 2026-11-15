@@ -231,7 +231,7 @@ export default function Home() {
             <div className="flex justify-between items-center h-20">
               {/* Logo */}
               <motion.a
-                href="/admin"
+                href="#home"
                 onClick={(e) => {
                   e.preventDefault();
                   handleScrollToSection('home');
@@ -485,6 +485,13 @@ export default function Home() {
                   { src: '/1000057575-removebg-preview.png', alt: 'YASH Group Of Companies' },
                   { src: '/1000193597-removebg-preview.png', alt: 'Khodal Brass Industries' },
                   { src: '/1000193602-removebg-preview.png', alt: 'Kesaria' },
+                  { src: '/madhav-removebg-preview.png', alt: 'Madhav Technocast' },
+                  { src: '/NEXA.png', alt: 'NEXA Showroom' },
+                  { src: '/mahindra.png', alt: 'Mahindra Jamnagar' },
+                  { src: '/kamlesh-dairy.png', alt: 'Kamlesh Dairy' },
+                  { src: '/fivestar-brass.png', alt: 'Five Star Brass' },
+                  { src: '/hero-e-tech.png', alt: 'Hero E-Tech' },
+                  { src: '/silver-plaza.png', alt: 'Silver Plaza' },
                 ]
                   .concat([
                     { src: '/1000032540-removebg-preview.png', alt: 'The Emerald Club' },
@@ -496,6 +503,13 @@ export default function Home() {
                     { src: '/1000057575-removebg-preview.png', alt: 'YASH Group Of Companies' },
                     { src: '/1000193597-removebg-preview.png', alt: 'Khodal Brass Industries' },
                     { src: '/1000193602-removebg-preview.png', alt: 'Kesaria' },
+                    { src: '/madhav-removebg-preview.png', alt: 'Madhav Technocast' },
+                    { src: '/NEXA.png', alt: 'NEXA Showroom' },
+                    { src: '/mahindra.png', alt: 'Mahindra Jamnagar' },
+                    { src: '/kamlesh-dairy.png', alt: 'Kamlesh Dairy' },
+                    { src: '/fivestar-brass.png', alt: 'Five Star Brass' },
+                    { src: '/hero-e-tech.png', alt: 'Hero E-Tech' },
+                    { src: '/silver-plaza.png', alt: 'Silver Plaza' },
                   ])
                   .map((logo, index) => (
                     <div
@@ -508,7 +522,7 @@ export default function Home() {
                           alt={logo.alt}
                           fill
                           className="object-contain p-3"
-                          sizes="144px" 
+                          sizes="144px"
                         />
                       </div>
 
@@ -1044,15 +1058,6 @@ export default function Home() {
                       <p className="text-gray-600 text-[15px] leading-relaxed">1st Floor, Akash Complex, Nilkamal Chowk, Khodiyar Colony, Jamnagar, Gujarat - 361 006</p>
                     </div>
                   </div>
-                  <div className="flex items-start transition-all duration-300 pl-5">
-                    <svg className="w-5 h-5 text-[#040936] mr-3 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <div>
-                      <p className="font-semibold text-[#040936] text-[15px]">Address 2</p>
-                      <p className="text-gray-600 text-[15px] leading-relaxed">H-230, OPP. Panchkoshi 'B' Police Station, Dared GIDC, Phase 2, Jamnagar, Gujarat - 361 004</p>
-                    </div>
-                  </div>
 
                   <div className="flex items-start transition-all duration-300 pl-5">
                     <svg className="w-5 h-5 text-[#040936] mr-3 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -1060,7 +1065,7 @@ export default function Home() {
                     </svg>
                     <div>
                       <p className="font-semibold text-[#040936] text-[15px]">Phone</p>
-                      <p className="text-gray-600 text-[14px]">+91 99815 43499, +91 9426865263, +91 9913136994, +91 9724954080</p>
+                      <p className="text-gray-600 text-[14px]"> +91 9426865263, +91 9913136994</p>
                     </div>
                   </div>
 
@@ -1102,17 +1107,9 @@ export default function Home() {
                   <Image src="/Flag.png" alt="" fill className="object-contain" />
                 </div>
 
-                <h3 className="text-xl font-heading font-bold text-[#040936] mb-6 tracking-tight pt-4 pl-5">Branch Office - Rajkot</h3>
+
                 <div className="space-y-4">
-                  <div className="flex items-start transition-all duration-300 pl-5">
-                    <svg className="w-5 h-5 text-[#dec3a0] mr-3 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <div>
-                      <p className="font-semibold text-[#040936] text-[15px]">Address</p>
-                      <p className="text-gray-600 text-[15px] leading-relaxed">409 Shasvat Space, Nana Mauva Road, Mokaji Circle, Rajkot, Gujarat</p>
-                    </div>
-                  </div>
+
 
                   <div className="bg-gray-50 p-5 rounded mt-6 hover:bg-gray-100 transition-colors duration-300">
                     <h4 className="font-bold text-[#040936] mb-3 text-[16px]">Certifications & Partnerships</h4>
@@ -1129,123 +1126,6 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Contact Form */}
-            <motion.div
-              className="bg-white/95 backdrop-blur-sm p-8 rounded-lg border border-gray-200 hover:shadow-xl transition-all duration-300 relative overflow-hidden"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeInUp}
-            >
-              {/* Decorative Banners */}
-              <div className="absolute top-0 left-0 w-16 h-30 z-10">
-                <Image src="/Flag.png" alt="" fill className="object-contain" />
-              </div>
-              <div className="absolute top-0 right-0 w-16 h-30 z-10">
-                <Image src="/Flag.png" alt="" fill className="object-contain" />
-              </div>
-
-              <h3 className="text-4xl font-heading font-bold text-[#040936] mb-2 text-center tracking-tight pt-6">Send Enquiry</h3>
-
-              <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-4 pt-10">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-[15px] font-semibold text-gray-700 mb-2">
-                      Full Name <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      disabled={isLoggedIn}
-                      className="w-full px-4 py-2.5 border text-[#040936] border-gray-300 rounded-lg focus:ring-2 focus:ring-[#040936] focus:border-transparent transition-all duration-300 text-[15px] bg-white disabled:bg-gray-100 disabled:cursor-not-allowed"
-                      placeholder="Your full name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-[15px] font-semibold text-gray-700 mb-2">
-                      Email Address <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      disabled={isLoggedIn}
-                      className="w-full px-4 py-2.5 border text-[#040936] border-gray-300 rounded-lg focus:ring-2 focus:ring-[#040936] focus:border-transparent transition-all duration-300 text-[15px] bg-white disabled:bg-gray-100 disabled:cursor-not-allowed"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="phone" className="block text-[15px] font-semibold text-gray-700 mb-2">
-                      Phone Number <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      required
-                      pattern="[0-9]{10}"
-                      className="w-full px-4 py-2.5 border text-[#040936] border-gray-300 rounded-lg focus:ring-2 focus:ring-[#040936] focus:border-transparent transition-all duration-300 text-[15px] bg-white"
-                      placeholder="10-digit mobile number"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="service" className="block text-[15px] font-semibold text-gray-700 mb-2">
-                      Service Required <span className="text-red-500">*</span>
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-2.5 border text-[#040936] border-gray-300 rounded-lg focus:ring-2 focus:ring-[#040936] focus:border-transparent transition-all duration-300 text-[15px] bg-white"
-                    >
-                      <option value="">Select a service</option>
-                      <option value="security">Security Personnel</option>
-                      <option value="industrial">Industrial Manpower</option>
-                      <option value="housekeeping">Housekeeping Services</option>
-                      <option value="event">Event Security</option>
-                      <option value="hospital">Hospital & Institutional</option>
-                      <option value="admin">Administrative Support</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-[15px] font-semibold text-gray-700 mb-2">
-                    Message <span className="text-red-500">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={4}
-                    className="w-full px-4 py-2.5 border text-[#040936] border-gray-300 rounded-lg focus:ring-2 focus:ring-[#040936] focus:border-transparent transition-all duration-300 resize-none text-[15px] bg-white"
-                    placeholder="Please provide details about your security requirements..."
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full py-3.5 bg-[#040936] text-white rounded-lg font-semibold hover:bg-[#0a1147] transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-[#040936]/50 transition-all duration-300 text-[15px]"
-                >
-                  Submit Enquiry
-                </button>
-              </form>
-            </motion.div>
-
             {/* Contact CTA */}
             <motion.div
               className="mt-12 bg-[#040936] p-10 rounded-lg text-center text-white hover:bg-[#0a1147] transition-colors duration-300 relative overflow-hidden"
@@ -1259,16 +1139,36 @@ export default function Home() {
               <p className="text-[17px] mb-6 text-gray-300 leading-relaxed">Contact us today for a free consultation and customized security solution</p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a
-                  href="tel:+919426865263"
-                  className="px-8 py-3.5 bg-white text-[#040936] rounded-lg font-semibold hover:bg-gray-100 transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-white/50 transition-all duration-300 text-[15px]"
+                  href="https://wa.me/919913136994"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex h-11 items-center gap-2 rounded-full border-2 border-green-500 px-4 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-green-500 hover:shadow-lg"
+                  aria-label="Chat with us on WhatsApp"
                 >
-                  Call Now
+                  <FaWhatsapp className="text-xl text-green-500 transition-colors duration-300 group-hover:text-white" />
+                  <span className="text-sm font-semibold sm:text-base">+91 99131 36994</span>
+                </a>
+                <a
+                  href="https://instagram.com/airavat_security_service"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                  aria-label="Follow us on Instagram"
+                >
+                  <div className="w-11 h-11 rounded-full border-2 border-gray-400 flex items-center justify-center transition-all duration-300 group-hover:border-[#dec3a0] group-hover:bg-[#dec3a0] transform group-hover:-translate-y-1 group-hover:shadow-lg">
+                    <FaInstagram className="text-gray-300 text-xl transition-colors duration-300 group-hover:text-[#040936]" />
+                  </div>
                 </a>
                 <a
                   href="mailto:airavats1@gmail.com"
-                  className="px-8 py-3.5 bg-[#dec3a0] text-[#040936] rounded-lg font-semibold hover:bg-[#e5cfa8] transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-[#dec3a0]/50 transition-all duration-300 text-[15px]"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                  aria-label="Chat with us on Gmail"
                 >
-                  Send Email
+                  <div className="w-11 h-11 rounded-full border-2 border-gray-400 flex items-center justify-center transition-all duration-300 group-hover:border-[#dec3a0] group-hover:bg-[#dec3a0] transform group-hover:-translate-y-1 group-hover:shadow-lg">
+                    <BiLogoGmail className="text-gray-300 text-xl transition-colors duration-300 group-hover:text-[#040936]" />
+                  </div>
                 </a>
               </div>
             </motion.div>
@@ -1355,7 +1255,7 @@ export default function Home() {
 
                   {/* WhatsApp Icon */}
                   <a
-                    href="https://wa.me/919913136994"
+                    href="https://wa.me/919426865263"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group"
@@ -1456,35 +1356,6 @@ export default function Home() {
                               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                             </svg>
                             vivekpankhaniya43@gmail.com
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Malay Raval */}
-                    <div className="flex items-start gap-2">
-                      <span className="w-2 h-2 bg-[#dec3a0] rounded-full mt-1.5"></span>
-                      <div className="flex-1">
-                        <p className="font-semibold text-gray-300 text-sm mb-1">Malay Raval</p>
-                        <div className="flex flex-col gap-1">
-                          <a
-                            href="tel:+917016870163"
-                            className="text-gray-400 hover:text-[#dec3a0] transition-colors text-xs flex items-center gap-1.5"
-                          >
-                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                            </svg>
-                            +91 70168 70163
-                          </a>
-                          <a
-                            href="mailto:malay.raval11@gmail.com"
-                            className="text-gray-400 hover:text-[#dec3a0] transition-colors text-xs flex items-center gap-1.5"
-                          >
-                            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                            </svg>
-                            malay@ledgion.in
                           </a>
                         </div>
                       </div>
